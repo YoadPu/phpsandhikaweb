@@ -13,48 +13,61 @@ if (isset($_POST['tambah'])) {
 
 ?>
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <title>Student Create</title>
 </head>
 
 <body>
-  <h3>Tambah Data Siswa</h3>
-  <form action="" method="POST">
-    <ul>
-      <li>
-        <label>
-          Nama :
-          <input type="text" name="nama" autofocus required>
-        </label>
-      </li>
-      <li>
-        <label>
-          Kelas :
-          <input type="text" name="kelas" required>
-        </label>
-      </li>
-      <li>
-        <label>
-          Jurusan :
-          <input type="text" name="jurusan" required>
-        </label>
-      </li>
-      <li>
-        <label>
-          Gambar :
-          <input type="text" name="gambar" required>
-        </label>
-      </li>
-      <li>
-        <button type="submit" name="tambah">Tambah</button>
-      </li>
-    </ul>
-  </form>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>Student Add
+              <a href="latihan3.php" class="btn btn-danger float-end">Kembali</a>
+            </h4>
+          </div>
+          <div class="card-body">
+            <form action="" method="POST">
+
+              <div class="mb-3">
+                <label>Name Siswa</label>
+                <input type="text" name="nama" class="form-control" autofocus required>
+              </div>
+              <div class="mb-3">
+                <label>Kelas</label>
+                <input type="text" name="kelas" class="form-control" required>
+              </div>
+              <div class="mb-3">
+                <label>Jurusan</label>
+                <input type="text" name="jurusan" class="form-control" required>
+              </div>
+              <div class="mb-3">
+                <label>Gambar</label>
+                <input type="text" name="gambar" class="form-control" required>
+              </div>
+              <div class="mb-3">
+                <button type="submit" name="tambah" class="btn btn-primary">Tamnbah Siswa</button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
