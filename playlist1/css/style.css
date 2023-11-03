@@ -1,0 +1,29 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+.bg {
+  background-image: url("https://tasbihdigital.com/wp-content/uploads/2022/09/Stars-Aesthetic-iPhone-Wallpaper-HD-Lock-Screen.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.btn {
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  transition: 0.2s;
+}
+
+.text {
+  text-align: center;
+  color: red;
+  background-color: red;
+}
+

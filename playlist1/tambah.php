@@ -23,11 +23,11 @@ if (isset($_POST['tambah'])) {
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+  <link rel="stylesheet" href="css/style.css">
   <title>Student Create</title>
 </head>
 
-<body>
+<body class="bg">
   <div class="container mt-5">
     <div class="row">
       <div class="col-md-12">
@@ -42,23 +42,22 @@ if (isset($_POST['tambah'])) {
 
               <div class="mb-3">
                 <label>Name Siswa</label>
-                <input type="text" name="nama" class="form-control" autofocus required>
+                <input type="text" name="nama" class="form-control" autofocus required autocomplete="off">
               </div>
               <div class="mb-3">
                 <label>Kelas</label>
-                <input type="text" name="kelas" class="form-control" required>
-              </div>
-              <div class="mb-3">
-                <label>Jurusan</label>
-                <input type="text" name="jurusan" class="form-control" required>
-              </div>
-              <div class="mb-3">
-                <label>Gambar</label>
-                <input type="text" name="gambar" class="form-control" required>
-              </div>
-              <div class="mb-3">
-                <button type="submit" name="tambah" class="btn btn-primary">Tamnbah Siswa</button>
-              </div>
+                <input type="text" name="kelas" class="form-control" required </div>
+                <div class="mb-3">
+                  <label>Jurusan</label>
+                  <input type="text" name="jurusan" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                  <label>Gambar</label>
+                  <input type="text" name="gambar" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                  <button type="submit" name="tambah" class="btn btn-primary">Tamnbah Siswa</button>
+                </div>
 
             </form>
           </div>

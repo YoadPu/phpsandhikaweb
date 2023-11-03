@@ -1,6 +1,12 @@
 <?php 
 require 'functions.php';
 $datasiswa = query("SELECT * FROM datasiswa");
+
+// ketika cari ditekan
+if (isset($_POST['cari'])) {
+  $datasiswa = cari($_POST['keyword']);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -13,11 +19,11 @@ $datasiswa = query("SELECT * FROM datasiswa");
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-
+  <link rel="stylesheet" href="css/style.css">
   <title>Data Siswa</title>
 </head>
 
-<body>
+<body class="bg">
   <div class="container mt-4">
     <div class="row">
       <div class="col-md-12">
@@ -26,7 +32,12 @@ $datasiswa = query("SELECT * FROM datasiswa");
             <h4>
               Data Siswa
               <a href="tambah.php" class="btn btn-primary float-end">Tambah Siswa</a>
-            </h4>
+            </h4><br>
+            <form class="input-group" action="" method="POST">
+              <input type="text" name="keyword" class="form-control" placeholder="Cari siswa..." autocomplete="off"
+                autofocus>
+              <button class="btn btn-primary" name="cari" type="submit">Cari</button>
+            </form>
           </div>
           <div class="card-body">
             <table class="table table-bordered">
@@ -35,11 +46,14 @@ $datasiswa = query("SELECT * FROM datasiswa");
                   <th>ID</th>
                   <th>Gambar</th>
                   <th>Nama</th>
-                  <th>Kelas</th>
-                  <th>Jurusan</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
+              <?php if (empty($datasiswa)) : ?>
+              <tr>
+                <th colspan="4" class="text"><i>Data Siswa Tidak Ditemukan</i></th>
+              </tr>
+              <?php endif; ?>
               <tbody>
                 <?php $i = 1;
                   foreach ($datasiswa as $d) : ?>
@@ -47,8 +61,6 @@ $datasiswa = query("SELECT * FROM datasiswa");
                   <td><?= $i++; ?></td>
                   <td><img src="img/<?= $d['gambar']; ?>" alt="ip3nu" style="width: 100px" /></td>
                   <td><?= $d['nama']; ?></td>
-                  <td><?= $d['kelas']; ?></td>
-                  <td><?= $d['jurusan']; ?></td>
                   <td>
                     <a href="detail.php?id=<?= $d['id']; ?>" class="btn btn-info btn-sm">Lihat</a>
                     <a href="ubah.php?id=<?= $d['id']; ?>" class="btn btn-success btn-sm">Edit</a>
