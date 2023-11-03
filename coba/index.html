@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRUD Karyawan</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <h1>CRUD Data Karyawan</h1>
+
+    <form id="employee-form">
+      <input type="text" id="name" placeholder="Nama Karyawan" required />
+      <input type="text" id="position" placeholder="Posisi" required />
+      <input type="number" id="salary" placeholder="Gaji" required />
+      <button type="submit">Simpan</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th>Posisi</th>
+          <th>Gaji</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody id="employee-list">
+        <!-- Data karyawan akan ditampilkan di sini -->
+      </tbody>
+    </table>
+
+    <script>
+      $(document).ready(function () {
+        // Array untuk menyimpan data karyawan
+        let employees = [];
+
+        // Menampilkan data karyawan
+        function displayEmployees() {
+          let table = $("#employee-list");
+          table.empty();
+
+          for (let employee of employees) {
+            let row = `<tr>
+                        <td>${employee.name}</td>
+                        <td>${employee.position}</td>
+                        <td>${employee.salary}</td>
+                        <td>
+                            <button class="edit" data-id="${employee.id}">Edit</button>
+                            <button class="delete" data-id="${employee.id}">Hapus</button>
+                        </td>
+                    </tr>`;
+            table.append(row);
+          }
+        }
+
+        // Menambahkan karyawan
+        $("#employee-form").submit(function (event) {
+          event.preventDefault();
+          let name = $("#name").val();
+          let position = $("#position").val();
+          let salary = $("#salary").val();
+          let id = employees.length + 1;
+          employees.push({ id, name, position, salary });
+          displayEmployees();
+          this.reset();
+        });
+
+        // Menghapus karyawan
+        $("#employee-list").on("click", ".delete", function () {
+          let id = $(this).data("id");
+          employees = employees.filter((employee) => employee.id !== id);
+          displayEmployees();
+        });
+
+        // Edit karyawan
+        $("#employee-list").on("click", ".edit", function () {
+          let id = $(this).data("id");
+          let employee = employees.find((employee) => employee.id === id);
+          if (employee) {
+            let name = prompt("Ubah Nama:", employee.name);
+            let position = prompt("Ubah Posisi:", employee.position);
+            let salary = prompt("Ubah Gaji:", employee.salary);
+            employee.name = name;
+            employee.position = position;
+            employee.salary = salary;
+            displayEmployees();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
