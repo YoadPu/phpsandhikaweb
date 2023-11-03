@@ -37,3 +37,30 @@ function tambah ($data){
   echo mysqli_error($conn);
   return mysqli_affected_rows($conn);
 }
+
+function hapus ($id) {
+  $conn = koneksi();
+  mysqli_query($conn, "DELETE FROM datasiswa WHERE id =$id") or die(mysqli_error($conn));
+  return mysqli_affected_rows($conn);
+}
+
+function ubah ($data){
+  $conn = koneksi();
+
+  $id = htmlspecialchars($data['id']);
+  $nama = htmlspecialchars($data['nama']);
+  $kelas = htmlspecialchars($data['kelas']);
+  $jurusan = htmlspecialchars($data['jurusan']);
+  $gambar = htmlspecialchars($data['gambar']);
+
+  $query = "UPDATE datasiswa SET
+              nama = '$nama',
+              kelas = '$kelas',
+              jurusan = '$jurusan',
+              gambar = '$gambar'
+              WHERE id = $id";
+              
+
+  mysqli_query($conn, $query) or die(mysqli_error($conn));
+  return mysqli_affected_rows($conn);
+}

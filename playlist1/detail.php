@@ -1,5 +1,11 @@
 <?php 
 require 'functions.php';
+// jka tidak ada di url
+if (!isset($_GET['id'])) {
+  header('location: latihan3.php');
+  exit();
+}
+
 // ambil id dari url
 $id = $_GET['id'];
 // querty siswa berdasarkan id
@@ -23,7 +29,8 @@ $d = query("SELECT * FROM datasiswa WHERE id =$id");
     <li>Kelas : <?= $d['kelas']; ?></li>
     <li>Jurusan : <?= $d['jurusan']; ?></li>
     <li>
-      <a href="">Ubah</a> | <a href="">Hapus</a>
+      <a href="ubah.php?id=<?= $d['id']; ?>">Ubah</a> | <a href="hapus.php?id=<?= $d['id']; ?>"
+        onclick="return confirm ('Apakah Anda Yakin Ingin Menghapus Data Ini');">Hapus</a>
     </li>
     <li><a href="latihan3.php">Kembali Ke Halaman Siswa</a></li>
   </ul>
