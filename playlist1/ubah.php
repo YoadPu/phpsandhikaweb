@@ -51,6 +51,7 @@ $d = query("SELECT * FROM datasiswa WHERE id =$id");
           </div>
           <div class="card-body">
             <form action="" method="POST">
+              <input type="hidden" name="id" value="<?= $d['id']; ?>">
               <div class="mb-3">
                 <label>Gambar</label>
                 <input type="text" name="gambar" class="form-control" required value="<?= $d['gambar']; ?>" />
@@ -68,7 +69,7 @@ $d = query("SELECT * FROM datasiswa WHERE id =$id");
                 <input type="text" name="jurusan" class="form-control" required value="<?= $d['jurusan']; ?>" />
               </div>
               <div class="mb-3">
-                <button type="submit" name="tambah" class="btn btn-primary">Tamnbah Siswa</button>
+                <button type="submit" name="ubah" class="btn btn-primary">Ubah Data Siswa</button>
               </div>
             </form>
           </div>
