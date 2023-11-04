@@ -1,4 +1,11 @@
 <?php 
+session_start();
+if (!isset($_SESSION['login'])) {
+  header("Location: login.php");
+  exit();
+}
+
+
 require 'functions.php';
 // jka tidak ada di url
 if (!isset($_GET['id'])) {
@@ -10,7 +17,7 @@ if (!isset($_GET['id'])) {
 if (isset($_POST['ubah'])) {
   if( ubah($_POST) > 0 ) {
     echo "<script>
-      alert('Data Berhasil Diubahkan');
+      // alert('Data Berhasil Diubahkan');
       document.location.href = 'latihan3.php';
     </script>";
   }else echo "Data Gagal Diubah!";

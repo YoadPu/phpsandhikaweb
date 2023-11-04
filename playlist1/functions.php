@@ -84,3 +84,23 @@ function cari ($keyword) {
 
   return $rows;
 }
+
+function login ($data) {
+  $conn = koneksi();
+
+  $username = htmlspecialchars($data['username']);
+  $password = htmlspecialchars($data['password']);
+  
+  if ($username == 'admin' && $password == 'admin') {
+    $_SESSION['login'] = true;
+    
+    header("Location: latihan3.php");
+    exit;
+  } else {
+    return [
+      'error' => true,
+      'pesan' => 'Username atau Password Salah !'
+    ];
+  }
+  
+}

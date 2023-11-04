@@ -1,6 +1,6 @@
 <?php 
 require 'functions.php';
-$datasiswa = querty("SELECT * FROM datasiswa");
+$datasiswa = query("SELECT * FROM datasiswa");
 ?>
 
 <!DOCTYPE html>

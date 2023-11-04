@@ -1,4 +1,11 @@
 <?php 
+session_start();
+if (!isset($_SESSION['login'])) {
+  header("Location: login.php");
+  exit();
+}
+
+
 require 'functions.php';
 
 // cek apakah tombol submit sudah ditekan
@@ -46,14 +53,14 @@ if (isset($_POST['tambah'])) {
               </div>
               <div class="mb-3">
                 <label>Kelas</label>
-                <input type="text" name="kelas" class="form-control" required </div>
+                <input type="text" name="kelas" class="form-control" required autocomplete="off" </div>
                 <div class="mb-3">
                   <label>Jurusan</label>
-                  <input type="text" name="jurusan" class="form-control" required>
+                  <input type="text" name="jurusan" class="form-control" required autocomplete="off">
                 </div>
                 <div class="mb-3">
                   <label>Gambar</label>
-                  <input type="text" name="gambar" class="form-control" required>
+                  <input type="text" name="gambar" class="form-control" required autocomplete="off">
                 </div>
                 <div class="mb-3">
                   <button type="submit" name="tambah" class="btn btn-primary">Tamnbah Siswa</button>
